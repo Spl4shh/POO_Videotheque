@@ -68,7 +68,7 @@ public class Commande
 //Methode Particuliere---------------------------------------
 	public void ajouterEmprunt(Emprunt Emprunt) 
 	{
-		if(Emprunt.verifierDisponibilité() == true)
+		if(Emprunt.verifierDisponibilite() == true)
 		{
 			if(Emprunt.getDateDebut() != this.getDateCreation())
 			{

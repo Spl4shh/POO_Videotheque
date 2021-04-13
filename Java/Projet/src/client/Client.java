@@ -12,27 +12,24 @@ public abstract class Client {
 	private ArrayList<Commande> listeCommande;
 
 	
-	public void addCommande(int Commande) {
-		// TODO - implement Client.addCommande
+	public void addCommande(int Commande) 
+	{
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param Commande
-	 */
-	public void suppCommande(int Commande) {
-		// TODO - implement Client.suppCommande
+
+	public void suppCommande(int Commande) 
+	{
 		throw new UnsupportedOperationException();
 	}
 
-	public void setNom() {
-		// TODO - implement Client.setNom
+	public void setNom() 
+	{
 		throw new UnsupportedOperationException();
 	}
 
-	public void getNom() {
-		// TODO - implement Client.getNom
+	public void getNom() 
+	{
 		throw new UnsupportedOperationException();
 	}
 

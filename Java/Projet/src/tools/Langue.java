@@ -2,7 +2,7 @@ package tools;
 
 public enum Langue 
 {
-	Français,
+	Francais,
 	Anglais,
 	Allemand,
 	Espagnol,
