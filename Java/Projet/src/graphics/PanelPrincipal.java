@@ -1,7 +1,6 @@
 package graphics;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.*;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -21,7 +20,8 @@ public class PanelPrincipal extends JPanel
 	{
 		this.setLayout(new FlowLayout());
 		this.setBackground(Color.blue);
-		
+
+
 		boutonAcces = new JButton("Bienvenue");
 		this.add(boutonAcces);
 		

@@ -23,10 +23,9 @@ public class EcouteurBoutonAcces implements ActionListener
 	{
 		if(frameEntree.panelPrincipal.boutonAcces == e.getSource())
 		{
-
 			frameEntree.panelPrincipal.boutonAcces.setVisible(false);
-			frameEntree.panelPrincipal.panelChoix.setVisible(true);
 
+			frameEntree.panelPrincipal.panelChoix.setVisible(true);
 			frameEntree.panelPrincipal.panelChoix.setBackground(Color.blue);
 		}
 	}
