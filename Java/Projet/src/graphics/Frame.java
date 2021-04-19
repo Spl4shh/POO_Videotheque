@@ -17,12 +17,11 @@ public class Frame extends JFrame
 	{
 		frame = new JFrame("Gestion d'une bibliotheque");
 		frame.setVisible(true);
-		frame.setSize(800, 400);
+		frame.setSize(800, 500);
 		frame.setLocation((int)screenSize.getWidth()/2 - frame.getWidth()/2, (int)screenSize.getHeight()/2 - frame.getHeight()/2);
 
 		frame.add(panelPrincipal = new PanelPrincipal());
 
-		frame.setResizable(false);
-
+		pack();
 	}
 }

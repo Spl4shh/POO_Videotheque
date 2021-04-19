@@ -6,7 +6,10 @@ import java.awt.*;
 public class PanelStock extends JPanel
 {
     JLabel titre;
-    JButton btnAddStock, btnSuppStock, btnVoirStock;
+    JButton btnAddStock;
+    JButton btnSuppStock;
+    JButton btnVoirStock;
+    public JButton btnAccueil;
 
 
     public PanelStock()
@@ -24,5 +27,8 @@ public class PanelStock extends JPanel
 
         btnVoirStock = new JButton("Voir la liste");
         this.add(btnVoirStock);
+
+        btnAccueil = new JButton("Accueil");
+        this.add(btnAccueil);
     }
 }

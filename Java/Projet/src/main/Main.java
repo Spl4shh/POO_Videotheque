@@ -21,6 +21,7 @@ public class Main
         Frame affichage = new Frame();
         EcouteurBoutonAcces ecouteurBoutonAcces = new EcouteurBoutonAcces(affichage);
         EcouteurBtnChoix ecouteurBtnChoix = new EcouteurBtnChoix(affichage);
+        EcouteurBtnAccueil ecouteurBtnAccueil = new EcouteurBtnAccueil(affichage);
     }
 
     public static void creationProduit()
@@ -38,7 +39,7 @@ public class Main
     {
         Fidele clientFidele = new Fidele(identifiant, nom, prenom);
         listClient.add(clientFidele);
-}
+    }
 
     public static void creerClientOccasionel(String identifiant, String nom, String prenom)
     {

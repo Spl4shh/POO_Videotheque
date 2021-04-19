@@ -2,8 +2,7 @@ package graphics;
 
 import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class PanelPrincipal extends JPanel
 {
@@ -23,7 +22,7 @@ public class PanelPrincipal extends JPanel
 
 		boutonAcces = new JButton("Bienvenue");
 		this.add(boutonAcces);
-		
+
 		panelChoix = new PanelChoix();
 		this.add(panelChoix);
 		this.panelChoix.setVisible(false);
@@ -39,6 +38,20 @@ public class PanelPrincipal extends JPanel
 		panelStock = new PanelStock();
 		this.add(panelStock);
 		this.panelStock.setVisible(false);
+
+
+//a enlever, juste la methode pour afficher du contenu
+
+		JTextArea textArea = new JTextArea( 10, 70);
+		textArea.setText("Hello \n there \n you read \n my \n message \n ahah \n funny riught\n \n not \n for \n me");
+		textArea.setLineWrap(true);
+		textArea.setText("My brain is giant\n" + textArea.getText());
+
+		JScrollPane jpe = new JScrollPane(textArea);
+		JScrollBar verticalScrollBar;
+		jpe.setVerticalScrollBar(verticalScrollBar = new JScrollBar());
+
+		this.add(jpe);
 	}
 	
 }

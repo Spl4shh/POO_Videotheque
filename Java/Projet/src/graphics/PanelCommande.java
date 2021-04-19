@@ -6,7 +6,10 @@ import java.awt.*;
 public class PanelCommande extends JPanel
 {
     JLabel titre;
-    JButton btnAddCommande, btnSuppCommande, btnVoirCommande;
+    JButton btnAddCommande;
+    JButton btnSuppCommande;
+    JButton btnVoirCommande;
+    public JButton btnAccueil;
 
 
     public PanelCommande()
@@ -24,5 +27,8 @@ public class PanelCommande extends JPanel
 
         btnVoirCommande = new JButton("Voir la liste");
         this.add(btnVoirCommande);
+
+        btnAccueil = new JButton("Accueil");
+        this.add(btnAccueil);
     }
 }

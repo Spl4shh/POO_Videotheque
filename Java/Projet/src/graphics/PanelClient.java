@@ -6,7 +6,7 @@ import java.awt.*;
 public class PanelClient extends JPanel
 {
     JLabel titre;
-    JButton btnAddClient, btnSuppClient, btnVoirClient;
+    public JButton btnAddClient, btnSuppClient, btnVoirClient, btnAccueil;
 
     public PanelClient()
     {
@@ -23,5 +23,9 @@ public class PanelClient extends JPanel
 
         btnVoirClient = new JButton("Voir la liste");
         this.add(btnVoirClient);
+
+        btnAccueil = new JButton("Accueil");
+        this.add(btnAccueil);
+
     }
 }
