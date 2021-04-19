@@ -18,7 +18,6 @@ public class PanelPrincipal extends JPanel
 	
 	public PanelPrincipal()
 	{
-		this.setLayout(new FlowLayout());
 		this.setBackground(Color.blue);
 
 

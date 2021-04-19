@@ -38,7 +38,7 @@ public class Main
     {
         Fidele clientFidele = new Fidele(identifiant, nom, prenom);
         listClient.add(clientFidele);
-    }
+}
 
     public static void creerClientOccasionel(String identifiant, String nom, String prenom)
     {
