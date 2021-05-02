@@ -66,15 +66,15 @@ public class Commande
 	}
 
 //Methode Particuliere---------------------------------------
-	public void ajouterEmprunt(Emprunt Emprunt) 
+	public void ajouterEmprunt(Emprunt emprunt)
 	{
-		if(Emprunt.verifierDisponibilite() == true)
+		if(Emprunt.verifierDisponibilite(emprunt.getProduitConcerne()) == true)
 		{
-			if(Emprunt.getDateDebut() != this.getDateCreation())
+			if(emprunt.getDateDebut() != this.getDateCreation())
 			{
-				Emprunt.setDateDebut(this.getDateCreation());
+				emprunt.setDateDebut(this.getDateCreation());
 			}
-			this.listeEmprunt.add(Emprunt);
+			this.listeEmprunt.add(emprunt);
 		}
 	}
 

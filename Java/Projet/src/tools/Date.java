@@ -57,7 +57,7 @@ public class Date
 		
 		public String toString() 
 		{
-			return (this.jour + " / " + this.mois + " / " + this.annee);
+			return (this.jour + "/" + this.mois + "/" + this.annee);
 		}
 
 		public boolean equals(Object obj) 
@@ -82,7 +82,7 @@ public class Date
 					(3 * ((this.annee + 4900 + (this.mois - 14) / 12) / 100)) / 4 + this.jour - 32075);
 		}
 		
-		public boolean verif(int jour, int mois, int annee)
+		public static boolean verif(int jour, int mois, int annee)
 		{
 			boolean res = false;
 			if(jour >= 1 && jour <= 31)
@@ -104,6 +104,13 @@ public class Date
 							if(((annee % 4 == 0) && (annee % 100 != 0)) || (annee % 400 == 0))
 							{
 								if(jour >= 1 && jour <= 28)
+								{
+									res = true;
+								}
+							}
+							else
+							{
+								if(jour >= 1 && jour <= 27)
 								{
 									res = true;
 								}

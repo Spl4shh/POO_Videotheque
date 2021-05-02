@@ -59,5 +59,8 @@ public abstract class Produit
 		this.type = type;
 	}
 
-
+	public void reduireStock()				//toujours verifier que le produit est dispo avant cette methode
+	{
+		this.setNombreStock(this.getNombreStock()-1);
+	}
 }

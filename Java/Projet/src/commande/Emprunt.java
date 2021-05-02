@@ -51,9 +51,9 @@ public class Emprunt
 	}
 
 //Methode Particuliere--------------------------
-	public boolean verifierDisponibilite()
+	public static boolean verifierDisponibilite(Produit produit)
 	{
-		if(this.produitConcerne.getNombreStock() > 0)
+		if(produit.getNombreStock() > 0)
 		{
 			return true;
 		}

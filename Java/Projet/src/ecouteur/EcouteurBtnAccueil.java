@@ -1,7 +1,6 @@
 package ecouteur;
 
-import graphics.*;
-import graphics.Frame;
+import graphic.Frame;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,21 +13,41 @@ public class EcouteurBtnAccueil implements ActionListener
     public EcouteurBtnAccueil(Frame frame)
     {
         this.frame = frame;
-        frame.panelPrincipal.panelClient.btnAccueil.addActionListener( this);
-        frame.panelPrincipal.panelCommande.btnAccueil.addActionListener( this);
-        frame.panelPrincipal.panelStock.btnAccueil.addActionListener( this);
+        frame.panelPrincipal.panelClient.panelEntete.btnAccueil.addActionListener( this);
+        frame.panelPrincipal.panelCommande.panelEntete.btnAccueil.addActionListener( this);
+        frame.panelPrincipal.panelStock.panelEntete.btnAccueil.addActionListener( this);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        frame.panelPrincipal.panelCommande.setVisible(false);
-        frame.panelPrincipal.panelClient.setVisible(false);
-        frame.panelPrincipal.panelStock.setVisible(false);
+        //Client-------------------------------------------------------------
+        if (frame.panelPrincipal.panelClient.panelEntete.btnAccueil == e.getSource())
+        {
+            frame.panelPrincipal.panelClient.setVisible(false);
+            frame.panelPrincipal.panelClient.panelGestion.panelListe.setVisible(false);
+            frame.panelPrincipal.panelClient.panelSupprimerClient.setVisible(false);
+            frame.panelPrincipal.panelClient.panelAjouterClient.setVisible(false);
+        }
+
+        //Commande-------------------------------------------------------------
+        if (frame.panelPrincipal.panelCommande.panelEntete.btnAccueil == e.getSource())
+        {
+            frame.panelPrincipal.panelCommande.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelGestion.panelListe.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelAjouterCommande.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelListeEmprunt.setVisible(false);
+        }
+
+        //Stock-------------------------------------------------------------
+        if (frame.panelPrincipal.panelStock.panelEntete.btnAccueil == e.getSource())
+        {
+            frame.panelPrincipal.panelStock.setVisible(false);
+            frame.panelPrincipal.panelStock.panelGestion.panelListe.setVisible(false);
+        }
 
         frame.panelPrincipal.panelChoix.setVisible(true);
         frame.panelPrincipal.setBackground(Color.blue);
-
     }
 }
