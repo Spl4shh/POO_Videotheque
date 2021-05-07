@@ -27,28 +27,24 @@ public class EcouteurBtnSupprimerCommande implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         int i = frame.panelPrincipal.panelCommande.panelSupprimerCommande.listeBouton.indexOf(e.getSource());
-        String id = frame.panelPrincipal.panelCommande.panelSupprimerCommande.listeBouton.get(i).getText();
+        String id = frame.panelPrincipal.panelCommande.panelSupprimerCommande.listeBouton.get(i).getText().substring(16);
 
-/*A activer quand il y aura des commande pour les clients
 
         for (Client client : Main.listClient)
         {
-            for (Commande commande: client.getListeCommande())
+            for (Commande commande : client.getListeCommande())
             {
-                if (commande.getIdentifiant().equals(id))
+                if ((commande.getIdentifiant()).equals(id))
                 {
                     client.getListeCommande().remove(commande);
+                    break;
                 }
             }
         }
-*/
-        //Main.listClient.remove(i);
         frame.panelPrincipal.panelCommande.panelSupprimerCommande.listeBouton.remove(i);
         frame.panelPrincipal.panelCommande.panelSupprimerCommande.gridBouton.remove(i);
-
-        //supprimer le client du fichier texte et supprimer les commandes et les emprunts
-
-        frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(false);
-        frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(true);
+        Main.recharger(frame.panelPrincipal.panelCommande.panelSupprimerCommande);
     }
+
+
 }

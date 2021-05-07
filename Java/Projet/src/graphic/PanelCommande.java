@@ -10,7 +10,7 @@ public class PanelCommande extends JPanel
     public PanelAjouterCommande panelAjouterCommande;
     public PanelListe panelListeEmprunt;
     public PanelSupprimerCommande panelSupprimerCommande;
-    public JLabel totalCommande;
+    public JLabel total;
 
     public PanelCommande()
     {
@@ -25,22 +25,22 @@ public class PanelCommande extends JPanel
         this.add(panelGestion, "Center");
 
         panelAjouterCommande = new PanelAjouterCommande();
-        this.panelGestion.add(panelAjouterCommande, "Center");
+        this.panelGestion.add(panelAjouterCommande);
         this.panelAjouterCommande.setVisible(false);
 
         panelListeEmprunt = new PanelListe();
-        this.panelGestion.add(panelListeEmprunt, "South");
+        this.panelGestion.add(panelListeEmprunt);
         panelListeEmprunt.liste.setText("");
         panelListeEmprunt.liste.setColumns(40);
+        panelListeEmprunt.liste.setRows(10);
         panelListeEmprunt.setVisible(false);
 
-        totalCommande = new JLabel("Total : ");
-        this.panelListeEmprunt.add(totalCommande);
-        totalCommande.setVisible(true);
-        totalCommande.setOpaque(true);
+        total = new JLabel("Total : ");
+        this.panelListeEmprunt.add(total);
+        total.setVisible(true);
 
         panelSupprimerCommande = new PanelSupprimerCommande();
-        this.panelGestion.add(panelSupprimerCommande, "Center");
+        this.panelGestion.add(panelSupprimerCommande);
         this.panelSupprimerCommande.setVisible(false);
     }
 }

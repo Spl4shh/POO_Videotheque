@@ -21,7 +21,7 @@ public abstract class Client {
 	}
 
 //Getters----------------------------------------
-	public String getId()
+	public String getIdentifiant()
 	{
 		return identifiant;
 	}
@@ -47,7 +47,7 @@ public abstract class Client {
 		this.nom = nom;
 	}
 
-	public void setId(String id)
+	public void setIdentifiant(String id)
 	{
 		this.identifiant = id;
 	}
@@ -60,7 +60,7 @@ public abstract class Client {
 //Methode particuliere----------------------------------------
 	public String toString()
 	{
-		return "Client [identifiant=" + identifiant + ", nom=" + nom + ", prenom=" + prenom + ", listeCommande=" + listeCommande + "]";
+		return "Client : identifiant=" + identifiant + ", nom= " + nom + ", prenom= " + prenom + ", listeCommande= " + listeCommande ;
 	}
 
 	public void ajouterCommande(Commande Commande)

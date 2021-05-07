@@ -7,9 +7,6 @@ import javax.swing.*;
 public class PanelPrincipal extends JPanel
 {
 	public JButton boutonAcces;
-	public JButton btnClient;
-	public JButton btnStock;
-	public JButton btnCommande;
 	public PanelClient panelClient;
 	public PanelChoix panelChoix;
 	public PanelStock panelStock;

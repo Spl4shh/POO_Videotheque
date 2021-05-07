@@ -2,6 +2,7 @@ package graphic;
 
 import client.Client;
 import client.Fidele;
+import main.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,22 +30,6 @@ public class PanelSupprimerClient extends JPanel
 
         listeBouton = new ArrayList<JButton>();
 
-        //partie test a supprimer------------------------
-        JButton btn1 = new JButton("test");
-        JButton btn2 = new JButton("test2");
-        JButton btn3 = new JButton("test3");
-        JButton btn4 = new JButton("test4");
-        JButton btn5 = new JButton("tets5");
-        JButton btn6 = new JButton("test6");
-        JButton btn7 = new JButton("test7");
-        JButton btn8 = new JButton("test8");
-        JButton btn9 = new JButton("test9");
-        JButton btn10 = new JButton("test10");
-        JButton btn11 = new JButton("tets11");
-        JButton btn12 = new JButton("test12");
-
-        listeBouton.add(btn1);listeBouton.add(btn2);listeBouton.add(btn3);listeBouton.add(btn4);listeBouton.add(btn5);listeBouton.add(btn6);listeBouton.add(btn7);listeBouton.add(btn8);listeBouton.add(btn9);listeBouton.add(btn10);listeBouton.add(btn11);listeBouton.add(btn12);
-        //------------------------------------------------
 
 
 
@@ -65,9 +50,9 @@ public class PanelSupprimerClient extends JPanel
 //Possible d'implementer au dessus la partie en desous
 
 
-        for (int i = 0; i < listeBouton.size(); i++)
+        for (JButton bouton : listeBouton)
         {
-            gridBouton.add(listeBouton.get(i));
+            gridBouton.add(bouton);
         }
 
 
@@ -78,5 +63,28 @@ public class PanelSupprimerClient extends JPanel
         this.add(scrollPanel);
     }
 
+    public void clear()
+    {
+        for (JButton bouton : this.listeBouton)
+        {
+            this.gridBouton.remove(bouton);
+        }
+        this.listeBouton.clear();
+    }
 
+    public void btnInit()
+    {
+        this.clear();
+
+        for (int i = 0; i < Main.listClient.size(); i++)
+        {
+            this.listeBouton.add(new JButton( Main.listClient.get(i).getNom() + " "
+                    + Main.listClient.get(i).getPrenom()));
+        }
+
+        for (JButton bouton : listeBouton)
+        {
+            this.gridBouton.add(bouton);
+        }
+    }
 }

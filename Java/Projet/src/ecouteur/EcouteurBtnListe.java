@@ -26,6 +26,8 @@ public class EcouteurBtnListe implements ActionListener
         //Client-------------------------------------------------------------
         if (frame.panelPrincipal.panelClient.panelEntete.panelBtnASV.btnVoir == e.getSource())
         {
+            frame.panelPrincipal.panelClient.panelGestion.panelListe.initListeClient();
+
             frame.panelPrincipal.panelClient.panelGestion.panelListe.setVisible(true);
             frame.panelPrincipal.panelClient.panelAjouterClient.setVisible(false);
             frame.panelPrincipal.panelClient.panelSupprimerClient.setVisible(false);
@@ -35,17 +37,23 @@ public class EcouteurBtnListe implements ActionListener
         //Commande-------------------------------------------------------------
         if (frame.panelPrincipal.panelCommande.panelEntete.panelBtnASV.btnVoir == e.getSource())
         {
+            frame.panelPrincipal.panelCommande.panelGestion.panelListe.initListeCommande();
+
+            frame.panelPrincipal.panelCommande.panelAjouterCommande.setVisible(false);
             frame.panelPrincipal.panelCommande.panelGestion.panelListe.setVisible(true);
-            //frame.panelPrincipal.panelCommande.panelAjouterClient.setVisible(false);
-            //frame.panelPrincipal.panelCommande.panelSupprimerClient.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelListeEmprunt.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(false);
         }
 
         //Stock-------------------------------------------------------------
         if (frame.panelPrincipal.panelStock.panelEntete.panelBtnASV.btnVoir == e.getSource())
         {
+            frame.panelPrincipal.panelStock.panelGestion.panelListe.initListeProduit();
+
             frame.panelPrincipal.panelStock.panelGestion.panelListe.setVisible(true);
-            //frame.panelPrincipal.panelStock.panelAjouterClient.setVisible(false);
-            //frame.panelPrincipal.panelStock.panelSupprimerClient.setVisible(false);
+            frame.panelPrincipal.panelStock.panelAjouterStock.setVisible(false);
+            frame.panelPrincipal.panelStock.panelSupprimerStock.setVisible(false);
+            frame.panelPrincipal.panelStock.panelModifierStock.setVisible(false);
         }
     }
 }

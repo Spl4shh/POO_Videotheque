@@ -16,6 +16,7 @@ public class Emprunt
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.produitConcerne = produitConcerne;
+
 	}
 	
 //Getters---------------------------------------

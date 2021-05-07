@@ -27,13 +27,11 @@ public class EcouteurBtnSupprimerClient implements ActionListener
     {
         int i = frame.panelPrincipal.panelClient.panelSupprimerClient.listeBouton.indexOf(e.getSource());
 
-        //Main.listClient.remove(i);
+        Main.listClient.remove(i);
+
         frame.panelPrincipal.panelClient.panelSupprimerClient.listeBouton.remove(i);
         frame.panelPrincipal.panelClient.panelSupprimerClient.gridBouton.remove(i);
 
-        //supprimer le client du fichier texte et supprimer les commandes et les emprunts
-
-        frame.panelPrincipal.panelClient.panelSupprimerClient.setVisible(false);
-        frame.panelPrincipal.panelClient.panelSupprimerClient.setVisible(true);
+        Main.recharger(frame.panelPrincipal.panelClient.panelSupprimerClient);
     }
 }

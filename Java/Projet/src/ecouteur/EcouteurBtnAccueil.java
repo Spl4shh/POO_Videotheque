@@ -35,9 +35,10 @@ public class EcouteurBtnAccueil implements ActionListener
         if (frame.panelPrincipal.panelCommande.panelEntete.btnAccueil == e.getSource())
         {
             frame.panelPrincipal.panelCommande.setVisible(false);
-            frame.panelPrincipal.panelCommande.panelGestion.panelListe.setVisible(false);
             frame.panelPrincipal.panelCommande.panelAjouterCommande.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelGestion.panelListe.setVisible(false);
             frame.panelPrincipal.panelCommande.panelListeEmprunt.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(false);
         }
 
         //Stock-------------------------------------------------------------
@@ -45,6 +46,9 @@ public class EcouteurBtnAccueil implements ActionListener
         {
             frame.panelPrincipal.panelStock.setVisible(false);
             frame.panelPrincipal.panelStock.panelGestion.panelListe.setVisible(false);
+            frame.panelPrincipal.panelStock.panelSupprimerStock.setVisible(false);
+            frame.panelPrincipal.panelStock.panelModifierStock.setVisible(false);
+            frame.panelPrincipal.panelStock.panelAjouterStock.setVisible(false);
         }
 
         frame.panelPrincipal.panelChoix.setVisible(true);

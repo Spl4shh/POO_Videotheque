@@ -3,6 +3,7 @@ package graphic;
 import client.Client;
 import commande.Commande;
 import main.Main;
+import produit.Produit;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,10 +20,7 @@ public class PanelListe extends JPanel
         this.setLayout(new GridLayout(0, 1));
 
 
-        liste = new JTextArea( 4, 80);
-        liste.setText("Hello \n there \n you\n read \n my \n messagen  funny\n right\n \n not \n for \n me");
-        liste.setLineWrap(true);
-        liste.setText("My brain\n is giant\n" + liste.getText());
+        liste = new JTextArea( 20, 80);
         liste.setEditable(false);
 
         scrollListe = new JScrollPane(liste);
@@ -35,30 +33,49 @@ public class PanelListe extends JPanel
         this.add(scrollListe);
     }
 
+    public void initListeClient()
+    {
+        this.clear();
+        for (Client client : Main.listClient )
+        {
+            String textPrec = this.liste.getText();
+            this.liste.setText(textPrec + "Client numéro " + client.getIdentifiant() + " : " + client.getNom() + " " + client.getNom()
+                    + ", " + client.getListeCommande().size() + " commande(s) éffectuée(s) \n");
+        }
+    }
+
+    public void initListeCommande()
+    {
+        this.clear();
+        for (Client client : Main.listClient )
+        {
+            for (Commande commande : client.getListeCommande())
+            {
+                String textPrec = this.liste.getText();
+                this.liste.setText(textPrec + "Commande numéro " + commande.getIdentifiant() + " effetuée par le client numero "
+                        + client.getIdentifiant() + ", " + client.getNom() + " " + client.getPrenom()
+                        + ", nombre d'emprunt : " + commande.getListeEmprunt().size() + ", date de création : "
+                         + commande.getDateCreation().toString() + ", montant total (sans reduction) : " + commande.montantCommande() + "€\n");
+            }
+        }
+    }
+
+    public void initListeProduit()
+    {
+        this.clear();
+        for (Produit produit : Main.listProduit )
+        {
+            String textPrec = this.liste.getText();
+            this.liste.setText(textPrec + "Produit numéro " + produit.getIdentifiant() + " : " + produit.getTitre() + ", Type : "
+                    + produit.getType() + ", cout journalier : " + produit.getTarifJournalier() + "€, nombre en stock :" + produit.getNombreStock()+ "\n");
+        }
+    }
+
+
+
     public void clear()
     {
         this.liste.setText("");
     }
 
-    public void initListeEmprunt(Commande commande, Client client)
-    {
-        for (int i = 0; i < Main.listClient.size(); i++)
-        {
-            if(Main.listClient.get(i).equals(client))
-            {
-                for (int j = 0; j < client.getListeCommande().size(); j++)
-                {
-                    if (client.getListeCommande().get(j).equals(commande))
-                    {
-                        for (int k = 0; k < commande.getListeEmprunt().size(); k++)
-                        {
-                            this.liste.setText(this.liste.getText() + "Emprunt de " + commande.getListeEmprunt().get(k).getProduitConcerne().getTitre()
-                                    + " du " + commande.getListeEmprunt().get(k).getDateDebut().toString()
-                                    + " jusqu'au " + commande.getListeEmprunt().get(k).getDateFin().toString() + "\n");
-                        }
-                    }
-                }
-            }
-        }
-    }
 }

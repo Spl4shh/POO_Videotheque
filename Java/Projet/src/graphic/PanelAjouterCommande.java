@@ -1,6 +1,7 @@
 package graphic;
 
 import main.Main;
+import produit.Produit;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,10 +9,11 @@ import java.awt.*;
 public class PanelAjouterCommande extends JPanel
 {
     public JComboBox comboProduit, comboClient;
-    public JButton btnValiderClient, btnValiderEmprunt;
-    public JTextField jour, mois, annee;
+    public JButton btnValiderClient, btnValiderEmprunt, btnValiderCommande;
     public JLabel stockDispo, labelEmprunt, labelClient, labelDate1, labelDate2, messageErreur;
-    public JPanel ajoutDate;
+    public PanelAjoutDate panelAjoutDate;
+    public double totalCommande;
+
 
     public PanelAjouterCommande()
     {
@@ -19,11 +21,6 @@ public class PanelAjouterCommande extends JPanel
 
 
         comboClient = new JComboBox();
-
-        for (int i = 0; i < Main.listClient.size(); i++)
-        {
-            comboClient.addItem(Main.listClient.get(i).getNom() + "_" + Main.listClient.get(i).getPrenom());
-        }
         this.add(comboClient);
 
         btnValiderClient = new JButton("Valider");
@@ -35,11 +32,6 @@ public class PanelAjouterCommande extends JPanel
 
 
         comboProduit = new JComboBox();
-
-        for (int i = 0; i < Main.listProduit.size(); i++)
-        {
-            comboProduit.addItem(Main.listProduit.get(i).getTitre());
-        }
         this.add(comboProduit);
 
         stockDispo = new JLabel("     stock actuel : " + Main.listProduit.get(0).getNombreStock());
@@ -51,26 +43,24 @@ public class PanelAjouterCommande extends JPanel
         labelDate1 = new JLabel("Veuillez saisir la date de fin ");
         this.add(labelDate1);
 
-        ajoutDate = new JPanel();
-            jour = new JTextField(2);
-            ajoutDate.add(jour);
-            ajoutDate.add(new JLabel("/"));
-            mois = new JTextField(2);
-            ajoutDate.add(mois);
-            ajoutDate.add(new JLabel("/"));
-            annee = new JTextField(4);
-            ajoutDate.add(annee);
-        this.add(ajoutDate);
+        panelAjoutDate = new PanelAjoutDate();
+
+        this.add(panelAjoutDate);
 
         labelDate2 = new JLabel("d'emprunt au format jj/mm/yyyy");
         this.add(labelDate2);
 
         this.add(new JLabel());this.add(new JLabel());
-        this.add(messageErreur = new JLabel("Veuillez verifier la date et la disponibilitée"));
+        this.add(messageErreur = new JLabel("Veuillez verifier la date et/ou la disponibilitée"));
         messageErreur.setForeground(Color.RED);
 
         btnValiderEmprunt = new JButton("Valider cet emprunt");
         this.add(btnValiderEmprunt);
+
+        this.add(new JLabel());this.add(new JLabel());this.add(new JLabel());this.add(new JLabel());
+
+        btnValiderCommande = new JButton("Valider la Commande");
+        this.add(btnValiderCommande);
     }
 
     public void premierePhase()
@@ -78,15 +68,21 @@ public class PanelAjouterCommande extends JPanel
         comboClient.setVisible(true);
         btnValiderClient.setVisible(true);
 
+        totalCommande = 0;
         labelClient.setVisible(false);
         labelEmprunt.setVisible(false);
         comboProduit.setVisible(false);
         stockDispo.setVisible(false);
         labelDate1.setVisible(false);
-        ajoutDate.setVisible(false);
+        panelAjoutDate.setVisible(false);
+            panelAjoutDate.clear();
         labelDate2.setVisible(false);
         messageErreur.setVisible(false);
         btnValiderEmprunt.setVisible(false);
+        btnValiderCommande.setVisible(false);
+
+        this.genererListeProduit();
+        this.genererListeClient();
     }
 
     public void deuxiemePhase()
@@ -102,12 +98,30 @@ public class PanelAjouterCommande extends JPanel
             comboProduit.setSelectedIndex(0);
         stockDispo.setVisible(true);
         labelDate1.setVisible(true);
-        ajoutDate.setVisible(true);
-            jour.setText("");
-            mois.setText("");
-            annee.setText("");
+        panelAjoutDate.setVisible(true);
+            panelAjoutDate.clear();
         labelDate2.setVisible(true);
         messageErreur.setVisible(false);
         btnValiderEmprunt.setVisible(true);
+    }
+
+    public void genererListeProduit()
+    {
+        comboProduit.removeAllItems();
+
+        for (int i = 0; i < Main.listProduit.size(); i++)
+        {
+            comboProduit.addItem(Main.listProduit.get(i).getTitre());
+        }
+    }
+
+    public void genererListeClient()
+    {
+        comboClient.removeAllItems();
+
+        for (int i = 0; i < Main.listClient.size(); i++)
+        {
+            comboClient.addItem(Main.listClient.get(i).getNom() + "_" + Main.listClient.get(i).getPrenom());
+        }
     }
 }

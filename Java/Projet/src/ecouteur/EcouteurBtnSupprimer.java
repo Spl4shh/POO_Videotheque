@@ -25,6 +25,10 @@ public class EcouteurBtnSupprimer implements ActionListener
         //Client--------------------------------------------------------------------------------------
         if (frame.panelPrincipal.panelClient.panelEntete.panelBtnASV.btnSupp == e.getSource())
         {
+            frame.panelPrincipal.panelClient.panelSupprimerClient.btnInit();
+
+            EcouteurBtnSupprimerClient ecouteurBtnSupprimerClient = new EcouteurBtnSupprimerClient(frame);
+
             frame.panelPrincipal.panelClient.panelSupprimerClient.setVisible(true);
             frame.panelPrincipal.panelClient.panelAjouterClient.setVisible(false);
             frame.panelPrincipal.panelClient.panelGestion.panelListe.setVisible(false);
@@ -34,17 +38,29 @@ public class EcouteurBtnSupprimer implements ActionListener
         //Commande-------------------------------------------------------------------------------------
         if (frame.panelPrincipal.panelCommande.panelEntete.panelBtnASV.btnSupp == e.getSource())
         {
-            frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(true);
+            frame.panelPrincipal.panelCommande.panelSupprimerCommande.btnInit();
+
+            EcouteurBtnSupprimerCommande ecouteurBtnSupprimerCommande = new EcouteurBtnSupprimerCommande(frame);
+
             frame.panelPrincipal.panelCommande.panelAjouterCommande.setVisible(false);
             frame.panelPrincipal.panelCommande.panelGestion.panelListe.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelListeEmprunt.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(true);
         }
 
         //Stock--------------------------------------------------------------------------------------
         if (frame.panelPrincipal.panelStock.panelEntete.panelBtnASV.btnSupp == e.getSource())
         {
-            //frame.panelPrincipal.panelStock.panelSupprimerClient.setVisible(true);
-            //frame.panelPrincipal.panelStock.panelAjouterClient.setVisible(false);
+            frame.panelPrincipal.panelStock.panelSupprimerStock.btnInit();
+
+            EcouteurBtnSupprimerStock ecouteurBtnSupprimerStock = new EcouteurBtnSupprimerStock(frame);
+
+            frame.panelPrincipal.panelStock.panelSupprimerStock.setVisible(true);
+            frame.panelPrincipal.panelStock.panelAjouterStock.setVisible(false);
             frame.panelPrincipal.panelStock.panelGestion.panelListe.setVisible(false);
+            frame.panelPrincipal.panelStock.panelModifierStock.setVisible(false);
+
+
         }
     }
 }

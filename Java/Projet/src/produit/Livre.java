@@ -1,13 +1,15 @@
 package produit;
 
-public abstract class Livre extends Produit 
+import tools.Type;
+
+public class Livre extends Produit
 {
 	private String auteur;
 	
 //Construccteurs------------------------------------------	
-	public Livre(String identifiant, String titre, int nombreStock, String auteur) 
+	public Livre(String identifiant, String titre, int nombreStock, Type type, double tarifJournalier, String auteur)
 	{
-		super(identifiant, titre, nombreStock, "Document");
+		super(identifiant, titre, nombreStock, type, tarifJournalier);
 		this.auteur = auteur;
 	}
 

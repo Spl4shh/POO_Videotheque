@@ -1,17 +1,16 @@
 package produit;
 
-public class DVD extends Produit 
+import tools.Type;
+
+public class DVD extends Produit
 {
 	private String realisateur;
-	private double tarifJournalier;
-	
 	
 //Constructeur-------------------------------------------		
-	public DVD(String identifiant, String titre, int nombreStock, String realisateur,double tarifJournalier)
+	public DVD(String identifiant, String titre, int nombreStock, Type type, double tarifJournalier, String realisateur)
 	{
-		super(identifiant, titre, nombreStock, "Support Numerique");
+		super(identifiant, titre, nombreStock, type, tarifJournalier);
 		this.realisateur = realisateur;
-		this.tarifJournalier = tarifJournalier;
 	}
 
 //Getters-------------------------------------------		
@@ -20,10 +19,6 @@ public class DVD extends Produit
 		return realisateur;
 	}
 
-	public double getTarifJournalier() 
-	{
-		return tarifJournalier;
-	}
 
 //Setters-------------------------------------------		
 	public void setRealisateur(String realisateur) 
@@ -31,9 +26,4 @@ public class DVD extends Produit
 		this.realisateur = realisateur;
 	}
 
-	public void setTarifJournalier(double tarifJournalier) 
-	{
-		this.tarifJournalier = tarifJournalier;
-	}
-	
 }

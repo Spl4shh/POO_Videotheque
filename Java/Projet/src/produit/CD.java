@@ -1,24 +1,20 @@
 package produit;
 
-public class CD extends Produit 
+import tools.Type;
+
+public class CD extends Produit
 {
-	private double tarifJournalier;
 	private int anneeSortie;
 
 	
 //Constructereurs------------------------------------------
-	public CD(String identifiant, String titre, int nombreStock, double tarifJournalier, int anneeSortie) 
+	public CD(String identifiant, String titre, int nombreStock, Type type , double tarifJournalier, int anneeSortie)
 	{
-		super(identifiant, titre, nombreStock, "Support Informatique");
-		this.tarifJournalier = tarifJournalier;
+		super(identifiant, titre, nombreStock, type, tarifJournalier);
 		this.anneeSortie = anneeSortie;
 	}
 
 //Getters------------------------------------------
-	public double getTarifJournalier() 
-	{
-		return tarifJournalier;
-	}
 
 	public int getAnneeSortie() 
 	{
@@ -26,10 +22,6 @@ public class CD extends Produit
 	}
 
 //Setters------------------------------------------
-	public void setTarifJournalier(double tarifJournalier) 
-	{
-		this.tarifJournalier = tarifJournalier;
-	}
 
 	public void setAnneeSortie(int anneeSortie) 
 	{

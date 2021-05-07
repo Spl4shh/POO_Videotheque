@@ -1,14 +1,12 @@
 package graphic;
 
-import client.Client;
-import commande.Commande;
 import main.Main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class PanelSupprimerCommande extends JPanel
+public class PanelSupprimerStock extends JPanel
 {
     public JScrollBar verticalScrollBar;
     public ArrayList<JButton> listeBouton;
@@ -16,7 +14,7 @@ public class PanelSupprimerCommande extends JPanel
     public JScrollPane scrollPanel;
     public JPanel gridBouton = new JPanel();
 
-    public PanelSupprimerCommande()
+    public PanelSupprimerStock()
     {
         verticalScrollBar = new JScrollBar();
         verticalScrollBar.setUnitIncrement(16);
@@ -31,14 +29,9 @@ public class PanelSupprimerCommande extends JPanel
         listeBouton = new ArrayList<JButton>();
 
 
+
         gridBouton.setLayout(new GridLayout(0, 1));
         gridBouton.setSize(400, 500);
-
-        
-        for (JButton bouton : listeBouton)
-        {
-            gridBouton.add(bouton);
-        }
 
 
         scrollPanel = new JScrollPane(gridBouton);
@@ -61,12 +54,11 @@ public class PanelSupprimerCommande extends JPanel
     {
         this.clear();
 
-        for (Client client : Main.listClient )
+        for (int i = 0; i < Main.listProduit.size(); i++)
         {
-            for (Commande commande : client.getListeCommande())
-            {
-                listeBouton.add(new JButton("Commande numéro " + commande.getIdentifiant()));
-            }
+            this.listeBouton.add(new JButton(Main.listProduit.get(i).getType() + " / "
+                    + Main.listProduit.get(i).getTitre() + " / "
+                    + Main.listProduit.get(i).getIdentifiant()));
         }
 
         for (JButton bouton : listeBouton)

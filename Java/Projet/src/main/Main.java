@@ -1,13 +1,14 @@
 package main;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import client.*;
 import commande.Commande;
 import commande.Emprunt;
+import graphic.Frame;
 import produit.*;
 import tools.*;
-import graphic.*;
 import ecouteur.*;
 
 
@@ -15,12 +16,11 @@ public class Main
 {
     public static ArrayList<Client> listClient = new ArrayList<Client>();
     public static ArrayList<Produit> listProduit = new ArrayList<Produit>();
-
+    public static ArrayList<Emprunt> listEmprunt = new ArrayList<Emprunt>();
 
     public static void main(String[] args)
     {
-        creationProduit();
-        creationClient();
+        setupEssai();
 
         Frame affichage = new Frame();
 
@@ -30,42 +30,145 @@ public class Main
         EcouteurBtnListe ecouteurBtnListe = new EcouteurBtnListe(affichage);
         EcouteurBtnAjouter ecouteurBtnAjouter = new EcouteurBtnAjouter(affichage);
         EcouteurBtnSupprimer ecouteurBtnSupprimer = new EcouteurBtnSupprimer(affichage);
+        /*
         EcouteurBtnSupprimerClient ecouteurBtnSupprimerClient = new EcouteurBtnSupprimerClient(affichage);
         EcouteurBtnSupprimerCommande ecouteurBtnSupprimerCommande = new EcouteurBtnSupprimerCommande(affichage);
+        EcouteurBtnSupprimerStock ecouteurBtnSupprimerStock = new EcouteurBtnSupprimerStock(affichage);
+        */
+        EcouteurBtnModifier ecouteurBtnModifier = new EcouteurBtnModifier(affichage);
 
     }
 
-//Permet de faire des test, a supprimer par la suite--------------------------------------
-    public static void creationProduit()
+//Fonction setup pour creer le jeu d'essai--------------------------------------
+    public static void setupEssai()
     {
-        listProduit.add(new BD("0001A", "L'histoire de Tintin", 12, "Romain NATANELIC", 0.5));
-        listProduit.add(new Roman("0002A", "Un si grand soleil", 7, "Jeanne Alyse", 0.3));
-        listProduit.add(new Dictionnaire("0003A", "Dictionnaire le Blond", 2, 0.2, Langue.Francais));
-        listProduit.add(new CD("0004B", "Des chansons qui font pleuvoir", 5, 0.1, 2015));
-        listProduit.add(new ManuelScolaire("0005A", "Les maths pour les enfants", 3, "Les editions Djeun's", 0.25));
-        listProduit.add(new DVD("0006A", "Le Roi Lion", 0, "André Alisateur", 0.28));
-        listProduit.add(new Roman("0007A", "Le debut, puis la fin", 1, "Jay Malodo", 0.28));
-    }
-    public static void creationClient()
-    {
-        listClient.add(new Fidele("654654", "Dujardin", "Jean"));
-        listClient.add(new Occasionel("56788464", "Dutronc", "Marc"));
-        listClient.add(new Fidele("654844", "Delire", "Hugo"));
-        listClient.add(new Occasionel("656546454", "Schumi", "Mickael"));
+        setupListeProduit();
+        setupListeClient();
+        setupEmprunt();
+        setupCommande();
     }
 
+    public static void setupListeProduit()
+    {
+        listProduit.add(new Livre("1", "L'histoire de Tintin", 12, Type.BD, 0.5,"Romain NATANELIC"));
+        listProduit.add(new Livre("2", "Un si grand soleil", 7, Type.Roman, 0.3, "Jeanne Alyze"));
+        listProduit.add(new Dictionnaire("3", "Dictionnaire le Blond", 2, Type.Dictionnaire, 0.2, Langue.Francais));
+        listProduit.add(new CD("4", "Des chansons qui font pleuvoir", 5, Type.CD, 0.1, 2015));
+        listProduit.add(new Livre("5", "Les maths pour les enfants", 3, Type.Manuel_Scolaire, 0.25, "Les editions Djeun's"));
+        listProduit.add(new DVD("6", "Le Roi Lion", 0, Type.DVD, 0.28, "André Alisateur"));
+        listProduit.add(new Livre("7", "Le debut, puis la fin", 1, Type.Roman, 0.28, "Jay Malodo"));
+    }
+
+    public static void setupListeClient()
+    {
+        listClient.add(new Fidele("1", "Dujardin", "Jean"));
+        listClient.add(new Occasionel("2", "Dutronc", "Marc"));
+        listClient.add(new Fidele("3", "Delire", "Hugo"));
+        listClient.add(new Occasionel("4", "Schumi", "Mickael"));
+    }
+
+    public static void setupEmprunt()
+    {
+        listEmprunt.add(new Emprunt(new Date(23,4, 2021), new Date(23,8, 2021), listProduit.get(0)));
+        listEmprunt.add(new Emprunt(new Date(23,4, 2021), new Date(2,9, 2021), listProduit.get(3)));
+        listEmprunt.add(new Emprunt(new Date(1,5, 2021), new Date(1,5, 2022), listProduit.get(1)));
+        listEmprunt.add(new Emprunt(new Date(2,1, 2021), new Date(10,8, 2021), listProduit.get(6)));
+    }
+
+    public static void setupCommande()
+    {
+        listClient.get(0).ajouterCommande(new Commande("1", new Date(23, 4, 2021), ((Fidele)listClient.get(0)).getReduction()));
+        listClient.get(0).getListeCommande().get(0).ajouterEmprunt(listEmprunt.get(0));
+        listClient.get(0).getListeCommande().get(0).ajouterEmprunt(listEmprunt.get(1));
+
+        listClient.get(1).ajouterCommande(new Commande("2", new Date(1,5, 2021), ((Occasionel)listClient.get(1)).getReduction()));
+        listClient.get(1).getListeCommande().get(0).ajouterEmprunt(listEmprunt.get(2));
+
+        listClient.get(2).ajouterCommande(new Commande("3", new Date(2,1, 2021), ((Fidele)listClient.get(2)).getReduction()));
+        listClient.get(2).getListeCommande().get(0).ajouterEmprunt(listEmprunt.get(3));
+    }
 //------------------------------------------------------------------------------------------------------------
 
-
-    public static void creerClientFidele(String identifiant, String nom, String prenom)
+    public static int nombreEmprunt(Produit produit)
     {
-        Fidele clientFidele = new Fidele(identifiant, nom, prenom);
-        listClient.add(clientFidele);
+        String idProduit = produit.getIdentifiant();
+        int nombreEmprunt = 0;
+
+        for (Client client : Main.listClient)
+        {
+            for (Commande commande : client.getListeCommande())
+            {
+                for (Emprunt emprunt : commande.getListeEmprunt())
+                {
+                    if (emprunt.getProduitConcerne().getIdentifiant().equals(idProduit))
+                    {
+                        nombreEmprunt++;
+                    }
+                }
+            }
+        }
+        return (nombreEmprunt);
     }
 
-    public static void creerClientOccasionel(String identifiant, String nom, String prenom)
+    public static void recharger(Component component)
     {
-        Occasionel clientOccasionel = new Occasionel(identifiant, nom, prenom);
-        listClient.add(clientOccasionel);
+        component.setVisible(false);
+        component.setVisible(true);
+    }
+
+    public static boolean verifIdProduitExistant(String identifiantVerif)
+    {
+        boolean existe = false;
+        for (Produit produit : Main.listProduit)
+        {
+            if (produit.getIdentifiant().toLowerCase().equals(identifiantVerif.toLowerCase()))
+            {
+                existe = true;
+                break;
+            }
+        }
+        return existe;
+    }
+
+    public static int grandIdCommandeActuel()
+    {
+        int compteur = -1;
+        for (Client client : Main.listClient)
+        {
+            for (Commande commande : client.getListeCommande())
+            {
+                if (Integer.parseInt(commande.getIdentifiant()) > compteur)
+                {
+                    compteur = Integer.parseInt(commande.getIdentifiant());
+                }
+            }
+        }
+        return compteur;
+    }
+
+    public static int grandIdClientActuel()
+    {
+        int compteur = -1;
+        for (Client client : Main.listClient)
+        {
+            if (Integer.parseInt(client.getIdentifiant()) > compteur)
+            {
+                compteur = Integer.parseInt(client.getIdentifiant());
+            }
+        }
+        return compteur;
+    }
+
+    public static int grandIdProduitActuel()
+    {
+        int compteur = -1;
+        for (Produit produit : Main.listProduit)
+        {
+            if (Integer.parseInt(produit.getIdentifiant()) > compteur)
+            {
+                compteur = Integer.parseInt(produit.getIdentifiant());
+            }
+        }
+        return compteur;
     }
 }

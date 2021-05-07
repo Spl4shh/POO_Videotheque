@@ -4,22 +4,16 @@ import tools.*;
 
 public class Dictionnaire extends Produit 
 {
-	private double tarifJournalier;
 	private Langue Langue;
 	
 //Constructeur-------------------------------------------		
-	public Dictionnaire(String identifiant, String titre, int nombreStock, double tarifJournalier, tools.Langue langue)
+	public Dictionnaire(String identifiant, String titre, int nombreStock, Type type, double tarifJournalier, Langue langue)
 	{
-		super(identifiant, titre, nombreStock, "Support Numerique");
-		this.tarifJournalier = tarifJournalier;
+		super(identifiant, titre, nombreStock, type, tarifJournalier);
 		Langue = langue;
 	}
 
 //Getters-------------------------------------------			
-	public double getTarifJournalier() 
-	{
-		return tarifJournalier;
-	}
 
 	public Langue getLangue() 
 	{
@@ -27,10 +21,6 @@ public class Dictionnaire extends Produit
 	}
 	
 //Setters-------------------------------------------		
-	public void setTarifJournalier(double tarifJournalier) 
-	{
-		this.tarifJournalier = tarifJournalier;
-	}
 
 	public void setLangue(Langue langue) 
 	{

@@ -1,20 +1,25 @@
 package produit;
 
-public abstract class Produit 
+import tools.Type;
+
+public abstract class Produit
 {
 	private String identifiant;
 	private String titre;
 	private int nombreStock;
-	private String type;
-	
+	private Type type;
+	private double tarifJournalier;
 
-//Constructeurs ---------------------------------------	
-	public Produit(String identifiant, String titre, int nombreStock, String type) 
+
+
+	//Constructeurs ---------------------------------------
+	public Produit(String identifiant, String titre, int nombreStock, Type type, double tarifJournalier)
 	{
 		this.identifiant = identifiant;
 		this.titre = titre;
 		this.nombreStock = nombreStock;
 		this.type = type;
+		this.tarifJournalier = tarifJournalier;
 	}
 
 //Getters ---------------------------------------	
@@ -33,9 +38,14 @@ public abstract class Produit
 		return nombreStock;
 	}
 
-	public String getType() 
+	public Type getType()
 	{
 		return type;
+	}
+
+	public double getTarifJournalier()
+	{
+		return tarifJournalier;
 	}
 	
 //Setters ---------------------------------------	
@@ -54,13 +64,34 @@ public abstract class Produit
 		this.nombreStock = nombreStock;
 	}
 
-	public void setType(String type) 
+	public void setType(Type type)
 	{
 		this.type = type;
 	}
 
-	public void reduireStock()				//toujours verifier que le produit est dispo avant cette methode
+	public void setTarifJournalier(double tarifJournalier)
 	{
-		this.setNombreStock(this.getNombreStock()-1);
+		this.tarifJournalier = tarifJournalier;
+	}
+
+//Methode Particuliere
+	public void reduireStock()
+	{
+		if (this.getNombreStock() > 0)
+		{
+			this.setNombreStock(this.getNombreStock()-1);
+		}
+	}
+
+	public boolean estDispo()
+	{
+		if (this.getNombreStock() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

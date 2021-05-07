@@ -1,6 +1,8 @@
 package commande;
 
 import tools.*;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Commande 
@@ -12,7 +14,7 @@ public class Commande
 	private ArrayList<Emprunt> listeEmprunt;
 
 	
-//Constructeru==ur---------------------------------------	
+//Constructeur---------------------------------------
 	public Commande(String identifiant, Date dateCreation, double reduction, ArrayList<Emprunt> listeEmprunt) 
 	{
 		this.identifiant = identifiant;
@@ -21,6 +23,13 @@ public class Commande
 		this.listeEmprunt = listeEmprunt;
 	}
 
+	public Commande(String identifiant, Date dateCreation, double reduction)
+	{
+		this.identifiant = identifiant;
+		this.dateCreation = dateCreation;
+		this.reduction = reduction;
+		this.listeEmprunt = new ArrayList<Emprunt>();
+	}
 	
 //Getters---------------------------------------	
 	public String getIdentifiant() 
@@ -68,14 +77,7 @@ public class Commande
 //Methode Particuliere---------------------------------------
 	public void ajouterEmprunt(Emprunt emprunt)
 	{
-		if(Emprunt.verifierDisponibilite(emprunt.getProduitConcerne()) == true)
-		{
-			if(emprunt.getDateDebut() != this.getDateCreation())
-			{
-				emprunt.setDateDebut(this.getDateCreation());
-			}
-			this.listeEmprunt.add(emprunt);
-		}
+		this.listeEmprunt.add(emprunt);
 	}
 
 	public void supprimerEmprunt(Emprunt Emprunt) 
@@ -87,5 +89,21 @@ public class Commande
 				this.listeEmprunt.remove(i);
 			}
 		}		
+	}
+
+	public String montantCommande()
+	{
+		double total = 0;
+
+		DecimalFormat format2Decimal = new DecimalFormat();
+		format2Decimal.setMaximumFractionDigits(2);
+
+		for (Emprunt emprunt : this.listeEmprunt)
+		{
+			int dureeJours = (emprunt.getDateFin().nbJours() - emprunt.getDateDebut().nbJours());
+			total = total + (double)dureeJours * emprunt.getProduitConcerne().getTarifJournalier();
+		}
+
+		return format2Decimal.format(total);
 	}
 }
