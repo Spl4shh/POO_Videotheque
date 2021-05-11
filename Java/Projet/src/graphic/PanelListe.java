@@ -1,6 +1,7 @@
 package graphic;
 
 import client.Client;
+import client.Fidele;
 import commande.Commande;
 import main.Main;
 import produit.Produit;
@@ -13,6 +14,7 @@ public class PanelListe extends JPanel
     public JTextArea liste;
     public JScrollPane scrollListe;
     public JScrollBar verticalScrollBar;
+
 
     public PanelListe()
     {
@@ -38,9 +40,15 @@ public class PanelListe extends JPanel
         this.clear();
         for (Client client : Main.listClient )
         {
+            String indicationFidelite = "Occasionel";
+            if (client instanceof Fidele)
+            {
+                indicationFidelite = "Fidele";
+            }
+
             String textPrec = this.liste.getText();
-            this.liste.setText(textPrec + "Client numéro " + client.getIdentifiant() + " : " + client.getNom() + " " + client.getNom()
-                    + ", " + client.getListeCommande().size() + " commande(s) éffectuée(s) \n");
+            this.liste.setText(textPrec + "Client numéro " + client.getIdentifiant() + " : " + client.getNom() + " " + client.getPrenom()
+                    + " | client " + indicationFidelite + " | " + client.getListeCommande().size() + " commande(s) éffectuée(s) \n");
         }
     }
 
@@ -53,9 +61,9 @@ public class PanelListe extends JPanel
             {
                 String textPrec = this.liste.getText();
                 this.liste.setText(textPrec + "Commande numéro " + commande.getIdentifiant() + " effetuée par le client numero "
-                        + client.getIdentifiant() + ", " + client.getNom() + " " + client.getPrenom()
-                        + ", nombre d'emprunt : " + commande.getListeEmprunt().size() + ", date de création : "
-                         + commande.getDateCreation().toString() + ", montant total (sans reduction) : " + commande.montantCommande() + "€\n");
+                        + client.getIdentifiant() + " : " + client.getNom() + " " + client.getPrenom()
+                        + " | nombre d'emprunt : " + commande.getListeEmprunt().size() + " | date de création : "
+                         + commande.getDateCreation().toString() + " | montant total (sans reduction) : " + commande.montantCommandeString() + "€\n");
             }
         }
     }
@@ -66,8 +74,8 @@ public class PanelListe extends JPanel
         for (Produit produit : Main.listProduit )
         {
             String textPrec = this.liste.getText();
-            this.liste.setText(textPrec + "Produit numéro " + produit.getIdentifiant() + " : " + produit.getTitre() + ", Type : "
-                    + produit.getType() + ", cout journalier : " + produit.getTarifJournalier() + "€, nombre en stock :" + produit.getNombreStock()+ "\n");
+            this.liste.setText(textPrec + "Produit numéro " + produit.getIdentifiant() + " : " + produit.getTitre() + " | Type : "
+                    + produit.getType() + " | cout journalier : " + produit.getTarifJournalier() + "€ | nombre en stock :" + produit.getNombreStock()+ "\n");
         }
     }
 

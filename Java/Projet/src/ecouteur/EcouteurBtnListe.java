@@ -42,6 +42,7 @@ public class EcouteurBtnListe implements ActionListener
             frame.panelPrincipal.panelCommande.panelAjouterCommande.setVisible(false);
             frame.panelPrincipal.panelCommande.panelGestion.panelListe.setVisible(true);
             frame.panelPrincipal.panelCommande.panelListeEmprunt.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelModifierCommande.setVisible(false);
             frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(false);
         }
 

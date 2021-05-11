@@ -15,6 +15,7 @@ public class EcouteurBtnChoix implements ActionListener
         frame.panelPrincipal.panelChoix.btnClient.addActionListener(this);
         frame.panelPrincipal.panelChoix.btnCommande.addActionListener(this);
         frame.panelPrincipal.panelChoix.btnStock.addActionListener(this);
+        frame.panelPrincipal.boutonRechercher.addActionListener(this);
     }
 
     @Override
@@ -42,6 +43,15 @@ public class EcouteurBtnChoix implements ActionListener
             frame.panelPrincipal.panelStock.setVisible(true);
             frame.panelPrincipal.panelChoix.setVisible(false);
             frame.panelPrincipal.setBackground(frame.panelPrincipal.panelStock.getBackground());
+        }
+
+        //Rechercher
+        if (frame.panelPrincipal.boutonRechercher == e.getSource())
+        {
+            frame.panelPrincipal.panelRechercher.setVisible(true);
+            frame.panelPrincipal.panelChoix.setVisible(false);
+            frame.panelPrincipal.panelRechercher.genererListeClient();
+
         }
     }
 }

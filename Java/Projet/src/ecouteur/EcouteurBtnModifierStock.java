@@ -32,7 +32,7 @@ public class EcouteurBtnModifierStock implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if (frame.panelPrincipal.panelStock.panelModifierStock.gridBouton.isVisible())
+        if (e.getSource() != frame.panelPrincipal.panelStock.panelModifierStock.panelModifierProduitSelect.btnValiderProduit)
         {
             int j = frame.panelPrincipal.panelStock.panelModifierStock.listeBouton.indexOf(e.getSource());
             Type typeProduit = Main.listProduit.get(j).getType();
@@ -42,7 +42,7 @@ public class EcouteurBtnModifierStock implements ActionListener
             frame.panelPrincipal.panelStock.panelModifierStock.transfertInfoProduit(Main.listProduit.get(j));
 
             frame.panelPrincipal.panelStock.panelModifierStock.panelModifierProduitSelect.setVisible(true);
-            frame.panelPrincipal.panelStock.panelModifierStock.gridBouton.setVisible(false);
+            frame.panelPrincipal.panelStock.panelModifierStock.scrollPanel.setVisible(false);
         }
 
         if (frame.panelPrincipal.panelStock.panelModifierStock.panelModifierProduitSelect.btnValiderProduit == e.getSource())
@@ -129,7 +129,7 @@ public class EcouteurBtnModifierStock implements ActionListener
 
                             frame.panelPrincipal.panelStock.panelModifierStock.panelModifierProduitSelect.labelErreur.setVisible(false);
                             frame.panelPrincipal.panelStock.panelModifierStock.panelModifierProduitSelect.setVisible(false);
-                            frame.panelPrincipal.panelStock.panelModifierStock.gridBouton.setVisible(true);
+                            frame.panelPrincipal.panelStock.panelModifierStock.scrollPanel.setVisible(true);
                         }
                         else
                         {

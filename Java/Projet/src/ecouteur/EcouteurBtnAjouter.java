@@ -25,6 +25,7 @@ public class EcouteurBtnAjouter implements ActionListener
 
     ArrayList <Emprunt> empruntAAssigner = new ArrayList<Emprunt>();
     Client clientEnCours;
+    double sommeCommande;
 
     public EcouteurBtnAjouter(Frame f)
     {
@@ -120,6 +121,7 @@ public class EcouteurBtnAjouter implements ActionListener
             frame.panelPrincipal.panelCommande.panelAjouterCommande.setVisible(true);
             frame.panelPrincipal.panelCommande.panelGestion.panelListe.setVisible(false);
             frame.panelPrincipal.panelCommande.panelListeEmprunt.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelModifierCommande.setVisible(false);
             frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(false);
             frame.panelPrincipal.panelStock.panelModifierStock.setVisible(false);
 
@@ -132,17 +134,13 @@ public class EcouteurBtnAjouter implements ActionListener
             frame.panelPrincipal.panelCommande.panelAjouterCommande.deuxiemePhase();
 
             clientEnCours = Main.listClient.get(frame.panelPrincipal.panelCommande.panelAjouterCommande.comboClient.getSelectedIndex());
+            sommeCommande = 0;
         }
 
         if (frame.panelPrincipal.panelCommande.panelAjouterCommande.comboProduit == e.getSource() &&
             !frame.panelPrincipal.panelCommande.panelAjouterCommande.btnValiderClient.isVisible())
         {
-            frame.panelPrincipal.panelCommande.panelAjouterCommande.totalCommande = 0;
-            Produit produitSelect;
-
-            produitSelect = Main.listProduit.get(frame.panelPrincipal.panelCommande.panelAjouterCommande.comboProduit.getSelectedIndex());
-
-            frame.panelPrincipal.panelCommande.panelAjouterCommande.stockDispo.setText("     stock actuel : " + produitSelect.getNombreStock());
+            frame.panelPrincipal.panelCommande.panelAjouterCommande.majStock();
         }
 
         if (frame.panelPrincipal.panelCommande.panelAjouterCommande.btnValiderEmprunt == e.getSource())
@@ -160,6 +158,7 @@ public class EcouteurBtnAjouter implements ActionListener
 
                     Date dateDebut = new Date(dateCourante.getDayOfMonth(), dateCourante.getMonthValue(), dateCourante.getYear());
                     Date dateFin = new Date(jour, mois, annee);
+
                     Produit produitSelect;
 
                     DecimalFormat format2Decimal = new DecimalFormat();
@@ -170,7 +169,7 @@ public class EcouteurBtnAjouter implements ActionListener
                     if (produitSelect.estDispo() &&((dateFin.nbJours() - dateDebut.nbJours()) > 0))
                     {
                         int nbJour = (dateFin.nbJours() - dateDebut.nbJours());
-                        double totalCommande = frame.panelPrincipal.panelCommande.panelAjouterCommande.totalCommande + (produitSelect.getTarifJournalier()*nbJour);
+                        this.sommeCommande += (produitSelect.getTarifJournalier()*nbJour);
 
                         frame.panelPrincipal.panelCommande.panelListeEmprunt.liste.setText(frame.panelPrincipal.panelCommande.panelListeEmprunt.liste.getText() +
                                 "\"" + produitSelect.getTitre()
@@ -183,7 +182,7 @@ public class EcouteurBtnAjouter implements ActionListener
                         produitSelect.reduireStock();
 
                         frame.panelPrincipal.panelCommande.total.setText("Total de la commande (sans réduction) : "
-                                + format2Decimal.format(totalCommande) +  "€");
+                                + format2Decimal.format(sommeCommande) +  "€");
 
                         frame.panelPrincipal.panelCommande.panelListeEmprunt.setVisible(true);
                         frame.panelPrincipal.panelCommande.panelAjouterCommande.deuxiemePhase();
@@ -228,6 +227,7 @@ public class EcouteurBtnAjouter implements ActionListener
             frame.panelPrincipal.panelCommande.panelListeEmprunt.setVisible(false);
             frame.panelPrincipal.panelCommande.panelAjouterCommande.premierePhase();
             empruntAAssigner.clear();
+            sommeCommande = 0;
         }
 
 

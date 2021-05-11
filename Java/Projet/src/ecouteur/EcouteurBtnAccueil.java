@@ -16,6 +16,7 @@ public class EcouteurBtnAccueil implements ActionListener
         frame.panelPrincipal.panelClient.panelEntete.btnAccueil.addActionListener( this);
         frame.panelPrincipal.panelCommande.panelEntete.btnAccueil.addActionListener( this);
         frame.panelPrincipal.panelStock.panelEntete.btnAccueil.addActionListener( this);
+        frame.panelPrincipal.panelRechercher.panelEntete.btnAccueil.addActionListener( this);
 
     }
 
@@ -38,6 +39,7 @@ public class EcouteurBtnAccueil implements ActionListener
             frame.panelPrincipal.panelCommande.panelAjouterCommande.setVisible(false);
             frame.panelPrincipal.panelCommande.panelGestion.panelListe.setVisible(false);
             frame.panelPrincipal.panelCommande.panelListeEmprunt.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelModifierCommande.setVisible(false);
             frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(false);
         }
 
@@ -49,6 +51,13 @@ public class EcouteurBtnAccueil implements ActionListener
             frame.panelPrincipal.panelStock.panelSupprimerStock.setVisible(false);
             frame.panelPrincipal.panelStock.panelModifierStock.setVisible(false);
             frame.panelPrincipal.panelStock.panelAjouterStock.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelModifierCommande.setVisible(false);
+        }
+
+        //Rechercher-------------------------------------------------------------
+        if (frame.panelPrincipal.panelRechercher.panelEntete.btnAccueil == e.getSource())
+        {
+            frame.panelPrincipal.panelRechercher.setVisible(false);
         }
 
         frame.panelPrincipal.panelChoix.setVisible(true);

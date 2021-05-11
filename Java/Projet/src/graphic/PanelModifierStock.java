@@ -22,10 +22,6 @@ public class PanelModifierStock extends JPanel
 
     public PanelModifierStock()
     {
-        this.setLayout(new GridLayout(0, 2));  //Une fois que les deux panel seront créé essayer avec 1 colonne et le setVisible
-
-    //Pour la modif, c'est le meme que ajouter produit mais sans le choix du type, et avec les cchamps deja rempli
-
         panelModifierProduitSelect = new PanelAjouterStock();
         panelModifierProduitSelect.btnValiderProduit.setText("Valider la modification");
         panelModifierProduitSelect.comboTypeProduit.setEnabled(false);
@@ -35,9 +31,6 @@ public class PanelModifierStock extends JPanel
 
 
         this.add(panelModifierProduitSelect);
-
-
-
 
     //Partie pour afficcher les boutons----------------------------
         verticalScrollBar = new JScrollBar();
@@ -117,76 +110,6 @@ public class PanelModifierStock extends JPanel
                 break;
         }
     }
-
-
-    /*public void panelModificationInit()
-    {
-        this.affichageModifProduit();
-
-        try
-        {
-            if (!(this.panelModifierProduitSelect.nomProduit.getText().trim().isEmpty()) &&
-                    !(this.panelModifierProduitSelect.identifiantProduit.getText().trim().isEmpty()) &&
-                    !(this.panelModifierProduitSelect.nombreStock.getText().trim().isEmpty()) &&
-                    !(this.panelModifierProduitSelect.tarifJournalier.getText().trim().isEmpty()))
-            {
-                String identifiant = this.panelModifierProduitSelect.identifiantProduit.getText().trim();
-                String nomProduit = this.panelModifierProduitSelect.nomProduit.getText().trim();
-                int nombreStock = Integer.parseInt(this.panelModifierProduitSelect.nombreStock.getText().trim());
-                double tarifJournalier = Double.parseDouble(this.panelModifierProduitSelect.tarifJournalier.getText().trim());
-                Type type = (Type) this.panelModifierProduitSelect.comboTypeProduit.getSelectedItem();
-
-                switch (this.panelModifierProduitSelect.comboTypeProduit.getSelectedIndex())
-                {
-                    case 0,1,2 :
-                        if (!this.panelModifierProduitSelect.auteurLivre.getText().trim().isEmpty())
-                        {
-                            String auteur = this.panelModifierProduitSelect.auteurLivre.getText().trim();
-                            Main.listProduit.add(new Livre(identifiant, nomProduit, nombreStock, type, tarifJournalier, auteur));
-                            this.panelModifierProduitSelect.reset();
-                        }
-                        break;
-
-                    case 3 :
-                        Langue langueDictionnaire = (Langue) this.panelModifierProduitSelect.comboLangueDictionnaire.getSelectedItem();
-                        Main.listProduit.add(new Dictionnaire(identifiant, nomProduit, nombreStock, type, tarifJournalier, langueDictionnaire));
-                        this.panelModifierProduitSelect.reset();
-                        break;
-
-                    case 4 :
-                        if (!this.panelModifierProduitSelect.anneeCD.getText().trim().isEmpty())
-                        {
-                            int anneeCD = Integer.parseInt(this.panelModifierProduitSelect.anneeCD.getText().trim());
-                            Main.listProduit.add(new CD(identifiant, nomProduit, nombreStock, type, tarifJournalier, anneeCD));
-                            this.panelModifierProduitSelect.reset();
-                        }
-                        break;
-
-                    case 5 :
-                        if (!this.panelModifierProduitSelect.realisateur.getText().trim().isEmpty())
-                        {
-                            String realisateur = this.panelModifierProduitSelect.realisateur.getText().trim();
-                            Main.listProduit.add(new DVD(identifiant, nomProduit, nombreStock, type, tarifJournalier, realisateur));
-                            this.panelModifierProduitSelect.reset();
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                this.panelModifierProduitSelect.labelErreur.setText("Veuille completer tout les champs de saisie");
-                this.panelModifierProduitSelect.labelErreur.setVisible(true);
-            }
-        }
-        catch (NumberFormatException ignored)
-        {
-            this.panelModifierProduitSelect.labelErreur.setText("Veuillez verifier les informations saisie");
-            this.panelModifierProduitSelect.labelErreur.setVisible(true);
-        }
-    }*/
 
     public void transfertInfoProduit(Produit produit)
     {

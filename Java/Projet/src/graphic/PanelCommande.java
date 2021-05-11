@@ -10,7 +10,9 @@ public class PanelCommande extends JPanel
     public PanelAjouterCommande panelAjouterCommande;
     public PanelListe panelListeEmprunt;
     public PanelSupprimerCommande panelSupprimerCommande;
+    public PanelModifierCommande panelModifierCommande;
     public JLabel total;
+    public JButton btnModifier;
 
     public PanelCommande()
     {
@@ -20,6 +22,9 @@ public class PanelCommande extends JPanel
         panelEntete = new PanelEntete();
         this.add(panelEntete, "North");
         this.panelEntete.titre.setText("Commande");
+
+        btnModifier = new JButton("Modifier");
+        panelEntete.add(btnModifier);
 
         panelGestion = new PanelGestion();
         this.add(panelGestion, "Center");
@@ -42,5 +47,10 @@ public class PanelCommande extends JPanel
         panelSupprimerCommande = new PanelSupprimerCommande();
         this.panelGestion.add(panelSupprimerCommande);
         this.panelSupprimerCommande.setVisible(false);
+
+
+        panelModifierCommande = new PanelModifierCommande();
+        this.panelGestion.add(panelModifierCommande);
+        this.panelModifierCommande.setVisible(false);
     }
 }

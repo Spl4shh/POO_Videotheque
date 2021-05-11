@@ -45,6 +45,7 @@ public class EcouteurBtnSupprimer implements ActionListener
             frame.panelPrincipal.panelCommande.panelAjouterCommande.setVisible(false);
             frame.panelPrincipal.panelCommande.panelGestion.panelListe.setVisible(false);
             frame.panelPrincipal.panelCommande.panelListeEmprunt.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelModifierCommande.setVisible(false);
             frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(true);
         }
 

@@ -6,24 +6,32 @@ import javax.swing.*;
 
 public class PanelPrincipal extends JPanel
 {
-	public JButton boutonAcces;
+	public JButton boutonAcces, boutonRechercher;
 	public PanelClient panelClient;
 	public PanelChoix panelChoix;
 	public PanelStock panelStock;
 	public PanelCommande panelCommande;
+	public PanelRechercher panelRechercher;
 
 	public PanelPrincipal()
 	{
 		this.setBackground(Color.blue);
 
 		boutonAcces = new JButton("Bienvenue");
-		this.add(boutonAcces, BorderLayout.NORTH);
+		this.add(boutonAcces);
 
 //CHOIX
 		panelChoix = new PanelChoix();
 		this.add(panelChoix);
 		this.panelChoix.setVisible(false);
 
+//RECHERCHER
+		boutonRechercher = new JButton("Rechercher");
+		this.panelChoix.add(boutonRechercher);
+
+		panelRechercher = new PanelRechercher();
+		this.add(panelRechercher);
+		this.panelRechercher.setVisible(false);
 
 //CLIENT
 		panelClient = new PanelClient();

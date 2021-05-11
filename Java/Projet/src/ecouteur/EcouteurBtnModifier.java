@@ -15,23 +15,38 @@ public class EcouteurBtnModifier implements ActionListener
         this.frame = f;
 
         frame.panelPrincipal.panelStock.btnModifier.addActionListener(this);
+        frame.panelPrincipal.panelCommande.btnModifier.addActionListener(this);
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        frame.panelPrincipal.panelStock.panelAjouterStock.setVisible(false);
-        frame.panelPrincipal.panelStock.panelGestion.panelListe.setVisible(false);
-        frame.panelPrincipal.panelStock.panelSupprimerStock.setVisible(false);
+        if (frame.panelPrincipal.panelStock.btnModifier == e.getSource())
+        {
+            frame.panelPrincipal.panelStock.panelAjouterStock.setVisible(false);
+            frame.panelPrincipal.panelStock.panelGestion.panelListe.setVisible(false);
+            frame.panelPrincipal.panelStock.panelSupprimerStock.setVisible(false);
 
-        frame.panelPrincipal.panelStock.panelModifierStock.gridBouton.setVisible(true);
-        frame.panelPrincipal.panelStock.panelModifierStock.panelModifierProduitSelect.setVisible(false);
+            frame.panelPrincipal.panelStock.panelModifierStock.gridBouton.setVisible(true);
+            frame.panelPrincipal.panelStock.panelModifierStock.panelModifierProduitSelect.setVisible(false);
 
-        frame.panelPrincipal.panelStock.panelModifierStock.btnInit();
+            frame.panelPrincipal.panelStock.panelModifierStock.btnInit();
 
-        EcouteurBtnModifierStock ecouteurBtnModifierStock = new EcouteurBtnModifierStock(frame);
+            EcouteurBtnModifierStock ecouteurBtnModifierStock = new EcouteurBtnModifierStock(frame);
 
-        Main.recharger(frame.panelPrincipal.panelStock.panelModifierStock);
+            Main.recharger(frame.panelPrincipal.panelStock.panelModifierStock);
+        }
+
+        if (frame.panelPrincipal.panelCommande.btnModifier == e.getSource())
+        {
+            frame.panelPrincipal.panelCommande.panelAjouterCommande.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelGestion.panelListe.setVisible(false);
+            frame.panelPrincipal.panelCommande.panelSupprimerCommande.setVisible(false);
+
+            frame.panelPrincipal.panelCommande.panelModifierCommande.setVisible(true);
+            frame.panelPrincipal.panelCommande.panelModifierCommande.init();
+
+        }
     }
 }

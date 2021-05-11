@@ -30,13 +30,10 @@ public class Main
         EcouteurBtnListe ecouteurBtnListe = new EcouteurBtnListe(affichage);
         EcouteurBtnAjouter ecouteurBtnAjouter = new EcouteurBtnAjouter(affichage);
         EcouteurBtnSupprimer ecouteurBtnSupprimer = new EcouteurBtnSupprimer(affichage);
-        /*
-        EcouteurBtnSupprimerClient ecouteurBtnSupprimerClient = new EcouteurBtnSupprimerClient(affichage);
-        EcouteurBtnSupprimerCommande ecouteurBtnSupprimerCommande = new EcouteurBtnSupprimerCommande(affichage);
-        EcouteurBtnSupprimerStock ecouteurBtnSupprimerStock = new EcouteurBtnSupprimerStock(affichage);
-        */
-        EcouteurBtnModifier ecouteurBtnModifier = new EcouteurBtnModifier(affichage);
 
+        EcouteurBtnModifier ecouteurBtnModifier = new EcouteurBtnModifier(affichage);
+        EcouteurBtnRecherche ecouteurBtnRecherche = new EcouteurBtnRecherche(affichage);
+        EcouteurBtnModifierCommande ecouteurBtnModifierCommande = new EcouteurBtnModifierCommande(affichage);
     }
 
 //Fonction setup pour creer le jeu d'essai--------------------------------------
@@ -72,7 +69,10 @@ public class Main
         listEmprunt.add(new Emprunt(new Date(23,4, 2021), new Date(23,8, 2021), listProduit.get(0)));
         listEmprunt.add(new Emprunt(new Date(23,4, 2021), new Date(2,9, 2021), listProduit.get(3)));
         listEmprunt.add(new Emprunt(new Date(1,5, 2021), new Date(1,5, 2022), listProduit.get(1)));
-        listEmprunt.add(new Emprunt(new Date(2,1, 2021), new Date(10,8, 2021), listProduit.get(6)));
+        listEmprunt.add(new Emprunt(new Date(2,1, 2021), new Date(10,8, 2021), listProduit.get(5)));
+        listEmprunt.add(new Emprunt(new Date(14,2, 2021), new Date(10,9, 2021), listProduit.get(2)));
+        listEmprunt.add(new Emprunt(new Date(3,3, 2021), new Date(24,7, 2021), listProduit.get(4)));
+
     }
 
     public static void setupCommande()
@@ -81,8 +81,14 @@ public class Main
         listClient.get(0).getListeCommande().get(0).ajouterEmprunt(listEmprunt.get(0));
         listClient.get(0).getListeCommande().get(0).ajouterEmprunt(listEmprunt.get(1));
 
+        listClient.get(0).ajouterCommande(new Commande("4", new Date(3, 3, 2021), ((Fidele)listClient.get(0)).getReduction()));
+        listClient.get(0).getListeCommande().get(1).ajouterEmprunt(listEmprunt.get(5));
+
+
         listClient.get(1).ajouterCommande(new Commande("2", new Date(1,5, 2021), ((Occasionel)listClient.get(1)).getReduction()));
         listClient.get(1).getListeCommande().get(0).ajouterEmprunt(listEmprunt.get(2));
+        listClient.get(1).getListeCommande().get(0).ajouterEmprunt(listEmprunt.get(4));
+
 
         listClient.get(2).ajouterCommande(new Commande("3", new Date(2,1, 2021), ((Fidele)listClient.get(2)).getReduction()));
         listClient.get(2).getListeCommande().get(0).ajouterEmprunt(listEmprunt.get(3));

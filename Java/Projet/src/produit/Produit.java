@@ -40,7 +40,7 @@ public abstract class Produit
 
 	public Type getType()
 	{
-		return type;
+ 		return type;
 	}
 
 	public double getTarifJournalier()
@@ -81,6 +81,11 @@ public abstract class Produit
 		{
 			this.setNombreStock(this.getNombreStock()-1);
 		}
+	}
+
+	public void augmenterStock()
+	{
+			this.setNombreStock(this.getNombreStock()+1);
 	}
 
 	public boolean estDispo()

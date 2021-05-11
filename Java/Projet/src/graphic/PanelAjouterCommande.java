@@ -66,7 +66,14 @@ public class PanelAjouterCommande extends JPanel
     public void premierePhase()
     {
         comboClient.setVisible(true);
-        btnValiderClient.setVisible(true);
+        if (Main.listClient.size() > 0)
+        {
+            btnValiderClient.setVisible(true);
+        }
+        else
+        {
+            btnValiderClient.setVisible(false);
+        }
 
         totalCommande = 0;
         labelClient.setVisible(false);
@@ -81,8 +88,12 @@ public class PanelAjouterCommande extends JPanel
         btnValiderEmprunt.setVisible(false);
         btnValiderCommande.setVisible(false);
 
-        this.genererListeProduit();
+
         this.genererListeClient();
+        if (Main.listClient.size() > 0)
+        {
+            this.genererListeProduit();
+        }
     }
 
     public void deuxiemePhase()
@@ -111,7 +122,7 @@ public class PanelAjouterCommande extends JPanel
 
         for (int i = 0; i < Main.listProduit.size(); i++)
         {
-            comboProduit.addItem(Main.listProduit.get(i).getTitre());
+            comboProduit.addItem(Main.listProduit.get(i).getTitre() + " | " + Main.listProduit.get(i).getIdentifiant());
         }
     }
 
@@ -121,7 +132,13 @@ public class PanelAjouterCommande extends JPanel
 
         for (int i = 0; i < Main.listClient.size(); i++)
         {
-            comboClient.addItem(Main.listClient.get(i).getNom() + "_" + Main.listClient.get(i).getPrenom());
+            comboClient.addItem(Main.listClient.get(i).getNom() + " " + Main.listClient.get(i).getPrenom() + " | " + Main.listClient.get(i).getIdentifiant());
         }
+    }
+
+    public void majStock()
+    {
+        int indexProduit = comboProduit.getSelectedIndex();
+        stockDispo.setText("     stock actuel : " + Main.listProduit.get(indexProduit).getNombreStock());
     }
 }

@@ -91,7 +91,7 @@ public class Commande
 		}		
 	}
 
-	public String montantCommande()
+	public String montantCommandeString()
 	{
 		double total = 0;
 
@@ -100,10 +100,24 @@ public class Commande
 
 		for (Emprunt emprunt : this.listeEmprunt)
 		{
-			int dureeJours = (emprunt.getDateFin().nbJours() - emprunt.getDateDebut().nbJours());
-			total = total + (double)dureeJours * emprunt.getProduitConcerne().getTarifJournalier();
+			total = total + emprunt.montantEmpruntDouble();
 		}
 
 		return format2Decimal.format(total);
 	}
+	public double montantCommandeDouble()
+	{
+		double total = 0;
+
+		DecimalFormat format2Decimal = new DecimalFormat();
+		format2Decimal.setMaximumFractionDigits(2);
+
+		for (Emprunt emprunt : this.listeEmprunt)
+		{
+			total = total + emprunt.montantEmpruntDouble();
+		}
+
+		return total;
+	}
+
 }

@@ -7,21 +7,19 @@ import javax.swing.*;
 
 public class Frame extends JFrame
 {
-	public JFrame frame;
 	public PanelPrincipal panelPrincipal;
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public Frame()
 	{
-		frame = new JFrame();
-		frame.setTitle("Gestion d'une Videotheque");
-		frame.setSize(1080, 700);
-		frame.setLocation((int)screenSize.getWidth()/2 - frame.getWidth()/2, (int)screenSize.getHeight()/2 - frame.getHeight()/2);
-		frame.setLayout(new BorderLayout());
+		this.setTitle("Gestion d'une Videotheque");
+		this.setSize(1080, 700);
+		this.setLocation((int)screenSize.getWidth()/2 - this.getWidth()/2, (int)screenSize.getHeight()/2 - this.getHeight()/2);
+		this.setLayout(new BorderLayout());
 
 		panelPrincipal = new PanelPrincipal();
-		frame.add(panelPrincipal, "Center");
+		this.add(panelPrincipal, "Center");
 
-		frame.setVisible(true);
+		this.setVisible(true);
 	}
 }

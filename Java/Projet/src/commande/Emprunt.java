@@ -3,6 +3,8 @@ package commande;
 import tools.*;
 import produit.*;
 
+import java.text.DecimalFormat;
+
 public class Emprunt 
 {
 
@@ -64,5 +66,34 @@ public class Emprunt
 		}
 	}
 
+	public double montantEmpruntDouble()
+	{
+		int dureeJours = (this.getDateFin().nbJours() - this.getDateDebut().nbJours());
+		double total = (double)dureeJours * this.getProduitConcerne().getTarifJournalier();
 
+		return total;
+	}
+
+	public String montantEmpruntString()
+	{
+		DecimalFormat format2Decimal = new DecimalFormat();
+		format2Decimal.setMaximumFractionDigits(2);
+
+		int dureeJours = (this.getDateFin().nbJours() - this.getDateDebut().nbJours());
+		double total = (double)dureeJours * this.getProduitConcerne().getTarifJournalier();
+
+		return format2Decimal.format(total);
+	}
+
+	public void removeProduitEmprunt()
+	{
+		java.time.LocalDate dateCourante = java.time.LocalDate.now();
+
+		Date dateDuJour = new Date(dateCourante.getDayOfMonth(), dateCourante.getMonthValue(), dateCourante.getYear());
+
+		if ((this.getDateFin().nbJours() - dateDuJour.nbJours()) > 0)
+		{
+			this.getProduitConcerne().augmenterStock();
+		}
+	}
 }

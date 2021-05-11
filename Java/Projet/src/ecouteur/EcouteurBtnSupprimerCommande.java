@@ -2,8 +2,10 @@ package ecouteur;
 
 import client.Client;
 import commande.Commande;
+import commande.Emprunt;
 import graphic.Frame;
 import main.Main;
+import tools.Date;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +38,10 @@ public class EcouteurBtnSupprimerCommande implements ActionListener
             {
                 if ((commande.getIdentifiant()).equals(id))
                 {
+                    for (Emprunt emprunt : commande.getListeEmprunt())
+                    {
+                        emprunt.removeProduitEmprunt();
+                    }
                     client.getListeCommande().remove(commande);
                     break;
                 }
