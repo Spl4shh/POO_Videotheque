@@ -1,2 +1,0 @@
-Merci d'installer la police presente dans Projet>police
-La police s'appelle Hello.ttf
